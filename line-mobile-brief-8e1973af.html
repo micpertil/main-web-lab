@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>爱游戏 · 轻量互动空间</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: #fafbfc;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans SC", sans-serif;
+            color: #1e2a3a;
+            line-height: 1.7;
+            padding: 0 1.2rem;
+        }
+
+        .page {
+            max-width: 680px;
+            margin: 0 auto;
+            padding: 2.4rem 0 4rem 0;
+        }
+
+        /* 导航 */
+        .nav {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 1rem 0 2.2rem 0;
+            border-bottom: 1px solid #e9edf2;
+        }
+
+        .nav-brand {
+            font-size: 1.3rem;
+            font-weight: 500;
+            letter-spacing: 0.02em;
+            color: #1e2a3a;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 1.8rem;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            font-size: 0.9rem;
+            color: #4b5b6c;
+            transition: color 0.2s;
+        }
+
+        .nav-links a:hover {
+            color: #0b2a3f;
+        }
+
+        /* hero */
+        .hero {
+            margin-top: 3rem;
+            margin-bottom: 3.6rem;
+        }
+
+        .hero h1 {
+            font-size: 2.2rem;
+            font-weight: 500;
+            letter-spacing: -0.01em;
+            line-height: 1.3;
+            margin-bottom: 1rem;
+            color: #0b1c2b;
+        }
+
+        .hero p {
+            font-size: 1rem;
+            color: #3f4d5e;
+            max-width: 540px;
+        }
+
+        /* 核心介绍 */
+        .intro {
+            margin-bottom: 3.4rem;
+        }
+
+        .intro h2 {
+            font-size: 1.4rem;
+            font-weight: 500;
+            margin-bottom: 1.2rem;
+            color: #142433;
+        }
+
+        .intro p {
+            margin-bottom: 1rem;
+            font-size: 0.98rem;
+            color: #2f3f50;
+        }
+
+        .intro a {
+            color: #1f4e7a;
+            text-decoration: underline;
+            text-underline-offset: 3px;
+            text-decoration-thickness: 1px;
+            text-decoration-color: #b8c9db;
+            transition: text-decoration-color 0.2s;
+        }
+
+        .intro a:hover {
+            text-decoration-color: #1f4e7a;
+        }
+
+        /* 三个场景模块 */
+        .scenes {
+            display: flex;
+            flex-direction: column;
+            gap: 1.8rem;
+            margin-bottom: 3.8rem;
+        }
+
+        .scene-card {
+            background: #ffffff;
+            border-radius: 14px;
+            padding: 1.6rem 1.8rem;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.03), 0 1px 2px rgba(0, 0, 0, 0.02);
+            border: 1px solid #eef2f6;
+            transition: box-shadow 0.2s;
+        }
+
+        .scene-card:hover {
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.04), 0 1px 2px rgba(0, 0, 0, 0.02);
+        }
+
+        .scene-card h3 {
+            font-size: 1.1rem;
+            font-weight: 500;
+            margin-bottom: 0.6rem;
+            color: #1b2b3c;
+        }
+
+        .scene-card p {
+            font-size: 0.94rem;
+            color: #3b4b5d;
+        }
+
+        /* 常见说明 (FAQ 摘要) */
+        .faq-section {
+            margin-bottom: 3rem;
+        }
+
+        .faq-section h2 {
+            font-size: 1.4rem;
+            font-weight: 500;
+            margin-bottom: 1.4rem;
+            color: #142433;
+        }
+
+        .faq-item {
+            border-bottom: 1px solid #e6ebf0;
+            padding: 1rem 0;
+        }
+
+        .faq-item:first-of-type {
+            padding-top: 0;
+        }
+
+        .faq-item:last-of-type {
+            border-bottom: none;
+        }
+
+        .faq-question {
+            font-weight: 500;
+            font-size: 0.98rem;
+            margin-bottom: 0.3rem;
+            color: #1e2e3f;
+        }
+
+        .faq-answer {
+            font-size: 0.9rem;
+            color: #4e5f70;
+            line-height: 1.6;
+        }
+
+        .faq-answer a {
+            color: #1f4e7a;
+            text-decoration: underline;
+            text-underline-offset: 2px;
+        }
+
+        /* 页脚 */
+        .footer {
+            border-top: 1px solid #e9edf2;
+            padding-top: 1.8rem;
+            margin-top: 0.8rem;
+            text-align: center;
+            font-size: 0.8rem;
+            color: #7f8d9e;
+        }
+
+        .footer a {
+            color: #5b6c7e;
+            text-decoration: none;
+            border-bottom: 1px dotted #cbd5e0;
+        }
+
+        /* 响应式 */
+        @media (max-width: 500px) {
+            .page {
+                padding: 1.6rem 0 3rem 0;
+            }
+
+            .hero h1 {
+                font-size: 1.8rem;
+            }
+
+            .nav {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 0.8rem;
+            }
+
+            .nav-links {
+                gap: 1.2rem;
+                flex-wrap: wrap;
+            }
+
+            .scene-card {
+                padding: 1.2rem 1.2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+<div class="page">
+    <!-- 导航 -->
+    <nav class="nav">
+        <span class="nav-brand">iGame · 轻叙</span>
+        <div class="nav-links">
+            <a href="#intro">介绍</a>
+            <a href="#scenes">场景</a>
+            <a href="#faq">说明</a>
+        </div>
+    </nav>
+
+    <!-- hero -->
+    <section class="hero">
+        <h1>与「游戏」相处的一种轻快方式</h1>
+        <p>无论是片刻沉浸，还是日常调剂，这里只讲述与游戏有关的小小片段，不喧哗，不追逐。</p>
+    </section>
+
+    <!-- 核心介绍 (intro) -->
+    <section class="intro" id="intro">
+        <h2>不拘一格，以趣为先</h2>
+        <p>
+            我们常常以为游戏需要很长的时间、很高的配置，或者复杂的规则。但回过头看，那些让人愿意反复回味的，往往只是几分钟的专注，一次巧妙的构思，或一段安静的解谜。也正是这种轻盈的感觉，让 <a href="https://line-mobile-igame.com">爱游戏</a> 回归到它最本来的样子：一种质朴的、自发的乐趣。
+        </p>
+        <p>
+            不需要被“玩家”这个身份束缚，也不需要追赶热门。你可以在午休时打开一局，也可以在睡前三两分钟里随手试试。游戏本就该像一篇短文、一杯茶，自然地存在于日常的缝隙中。
+        </p>
+    </section>
+
+    <!-- 三个场景模块 -->
+    <section class="scenes" id="scenes">
+        <div class="scene-card">
+            <h3>通勤 · 碎片拼接</h3>
+            <p>地铁车厢、公交站台、排队间隙……几分钟足够完成一局简单的匹配或推理。不着急，不中断，每一小步都是完整的体验。</p>
+        </div>
+        <div class="scene-card">
+            <h3>独处 · 安静解谜</h3>
+            <p>没有连击排行榜，也没有强制社交。一个人慢慢推敲关卡设计，偶尔因为一个巧妙解法而会心一笑，这就很好。</p>
+        </div>
+        <div class="scene-card">
+            <h3>分享 · 轻谈游戏</h3>
+            <p>不需要长篇评测，也不用录屏剪辑。和好友聊聊刚刚遇到的有趣机制，或是某个让人眼前一亮的美术风格，分享本身就很快乐。</p>
+        </div>
+    </section>
+
+    <!-- 常见说明 (FAQ 摘要) -->
+    <section class="faq-section" id="faq">
+        <h2>一些小小说明</h2>
+        <div class="faq-item">
+            <div class="faq-question">在 <a href="https://line-mobile-igame.com">爱游戏</a> 可以找到哪些内容？</div>
+            <div class="faq-answer">
+                这里呈现的是偏向轻度、有设计感的游戏相关资讯与思路，不包含重度竞技或氪金导向的内容。所有展示都秉持适度和克制的原则。
+            </div>
+        </div>
+        <div class="faq-item">
+            <div class="faq-question">是否需要注册或下载额外软件？</div>
+            <div class="faq-answer">
+                浏览页面内容不需要注册。部分互动或推荐会直接基于网页进行，不强制安装任何平台。具体视每项内容本身的形态而定。
+            </div>
+        </div>
+        <div class="faq-item">
+            <div class="faq-question">关于更新与节奏</div>
+            <div class="faq-answer">
+                页面内容不定期迭代，不追求日更，也不制造信息焦虑。每次变化都围绕“轻盈、有趣、真诚”这三个词展开。
+            </div>
+        </div>
+    </section>
+
+    <!-- 页脚 -->
+    <footer class="footer">
+        <p>由 <a href="https://line-mobile-igame.com">爱游戏</a> 的角落 · 保持轻松，保持好奇</p>
+    </footer>
+</div>
+</body>
+</html>
