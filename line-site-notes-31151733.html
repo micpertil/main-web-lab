@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>爱游戏 · 杂志专题</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      background: #f4f9fc;
+      font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+      color: #1d3b4a;
+      line-height: 1.7;
+      padding: 0 1.5rem 3rem;
+    }
+    .page {
+      max-width: 1120px;
+      margin: 0 auto;
+    }
+
+    /* hero 横幅 — 杂志风格 */
+    .hero {
+      background: linear-gradient(145deg, #d4ecee 0%, #b7dfe3 100%);
+      border-radius: 32px;
+      margin: 2.8rem 0 2.5rem;
+      padding: 3.5rem 2rem;
+      box-shadow: 0 12px 30px rgba(40, 120, 130, 0.08);
+      position: relative;
+      overflow: hidden;
+    }
+    .hero::after {
+      content: "✦";
+      font-size: 14rem;
+      color: rgba(60, 140, 150, 0.06);
+      position: absolute;
+      right: -3rem;
+      bottom: -3rem;
+      line-height: 1;
+      pointer-events: none;
+      transform: rotate(12deg);
+    }
+    .hero h1 {
+      font-size: 2.8rem;
+      font-weight: 500;
+      letter-spacing: -0.02em;
+      color: #0f3140;
+      position: relative;
+      z-index: 2;
+    }
+    .hero h1 span {
+      display: inline-block;
+      background: #ffffffaa;
+      backdrop-filter: blur(2px);
+      padding: 0 0.6rem 0.1rem;
+      border-radius: 40px;
+      font-weight: 600;
+      color: #1b5b68;
+    }
+    .hero .sub {
+      font-size: 1.15rem;
+      margin-top: 1.2rem;
+      color: #1b4c55;
+      max-width: 68%;
+      background: rgba(255,255,250,0.3);
+      padding: 0.4rem 1rem;
+      border-radius: 40px;
+      backdrop-filter: blur(1px);
+    }
+    @media (max-width: 640px) {
+      .hero {
+        padding: 2.2rem 1.5rem;
+      }
+      .hero h1 {
+        font-size: 2rem;
+      }
+      .hero .sub {
+        max-width: 100%;
+        font-size: 1rem;
+      }
+    }
+
+    /* 背景说明卡片 */
+    .bg-note {
+      background: #ffffff;
+      border-radius: 24px;
+      padding: 2rem 2.2rem;
+      margin: 2rem 0 2.5rem;
+      box-shadow: 0 6px 16px rgba(25, 85, 95, 0.06);
+      border-left: 6px solid #78bcc4;
+    }
+    .bg-note p {
+      font-size: 1.05rem;
+      color: #274f5c;
+      margin-bottom: 0.6rem;
+    }
+    .bg-note p:last-child {
+      margin-bottom: 0;
+    }
+
+    /* 三段自然介绍 — 网格卡片 */
+    .intro-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2rem;
+      margin: 2.5rem 0 2rem;
+    }
+    .intro-card {
+      background: white;
+      border-radius: 28px;
+      padding: 2rem 1.6rem 1.8rem;
+      box-shadow: 0 8px 20px rgba(40, 110, 120, 0.06);
+      transition: transform 0.2s ease, box-shadow 0.25s ease;
+      display: flex;
+      flex-direction: column;
+    }
+    .intro-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 14px 30px rgba(30, 90, 100, 0.10);
+    }
+    .intro-card .card-icon {
+      font-size: 2rem;
+      margin-bottom: 0.65rem;
+      color: #50a2ae;
+    }
+    .intro-card h3 {
+      font-size: 1.3rem;
+      font-weight: 500;
+      color: #1a4d5a;
+      margin-bottom: 0.75rem;
+      letter-spacing: -0.01em;
+    }
+    .intro-card p {
+      color: #2c5b66;
+      margin-bottom: 0.4rem;
+      flex: 1;
+    }
+    .intro-card .tag {
+      margin-top: 1rem;
+      font-size: 0.85rem;
+      color: #589ba7;
+      border-top: 1px solid #def0f2;
+      padding-top: 0.7rem;
+      letter-spacing: 0.3px;
+    }
+    @media (max-width: 780px) {
+      .intro-grid {
+        grid-template-columns: 1fr;
+        gap: 1.6rem;
+      }
+    }
+
+    /* 温馨提示 + 收藏板块 */
+    .keep-section {
+      background: #e5f2f5;
+      border-radius: 30px;
+      padding: 2rem 2.4rem;
+      margin: 3rem 0 2.2rem;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1.5rem;
+    }
+    .keep-section .keep-text {
+      flex: 2 1 260px;
+    }
+    .keep-section .keep-text p {
+      font-size: 1.1rem;
+      margin-bottom: 0.3rem;
+    }
+    .keep-section .keep-text .small-note {
+      font-size: 0.9rem;
+      color: #376c78;
+      opacity: 0.8;
+    }
+    .keep-section .bookmark-box {
+      flex: 1 1 180px;
+      background: white;
+      border-radius: 60px;
+      padding: 0.7rem 1.4rem;
+      font-size: 0.95rem;
+      font-weight: 500;
+      text-align: center;
+      color: #1e5b68;
+      box-shadow: 0 2px 10px rgba(40,110,120,0.06);
+      white-space: nowrap;
+    }
+    .keep-section .bookmark-box span {
+      background: #c7e3e8;
+      padding: 0.2rem 0.7rem;
+      border-radius: 30px;
+      margin-left: 0.3rem;
+    }
+
+    /* faq 摘要风格 */
+    .faq-digest {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.8rem;
+      margin: 2.8rem 0 2.2rem;
+    }
+    .faq-item {
+      background: white;
+      border-radius: 20px;
+      padding: 1.4rem 1.6rem;
+      box-shadow: 0 4px 12px rgba(30,90,100,0.04);
+      border-bottom: 2px solid #b6d9de;
+    }
+    .faq-item .q {
+      font-weight: 500;
+      color: #0f3e4a;
+      margin-bottom: 0.25rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    .faq-item .q::before {
+      content: "▹";
+      color: #469caa;
+      font-size: 1.2rem;
+    }
+    .faq-item .a {
+      color: #2c5b66;
+      font-size: 0.95rem;
+      padding-left: 1.7rem;
+    }
+    @media (max-width: 640px) {
+      .faq-digest {
+        grid-template-columns: 1fr;
+        gap: 1.2rem;
+      }
+      .keep-section {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 1.8rem;
+      }
+    }
+
+    /* 页尾访问提示 — 温和嵌入链接 */
+    .footer-note {
+      margin-top: 3rem;
+      padding-top: 1.8rem;
+      border-top: 1px solid #c9dee2;
+      text-align: center;
+      font-size: 1rem;
+      color: #306a77;
+    }
+    .footer-note a {
+      color: #1b6d7c;
+      text-decoration: none;
+      font-weight: 500;
+      border-bottom: 1px dashed #80b7c0;
+      transition: border 0.2s;
+    }
+    .footer-note a:hover {
+      border-bottom: 1px solid #1b6d7c;
+    }
+    .footer-note .meta {
+      margin-top: 0.5rem;
+      font-size: 0.85rem;
+      color: #5b8893;
+    }
+
+    hr {
+      border: none;
+      border-top: 1px solid #d3e6ea;
+      margin: 2rem 0;
+      opacity: 0.5;
+    }
+  </style>
+</head>
+<body>
+<div class="page">
+
+  <!-- hero 横幅 -->
+  <div class="hero">
+    <h1>爱游戏 · <span>再回访</span></h1>
+    <div class="sub">杂志专题 · 温和的相遇 以及持续的目光</div>
+  </div>
+
+  <!-- 背景说明 -->
+  <div class="bg-note">
+    <p>再次打开一个熟悉的站点，有时像翻开一本旧杂志。网址栏里输入 <strong>line-site-igame.com</strong>，轻盈的蓝绿色调便浮现眼前。这里没有催促，只有一种安静的陪伴感——对于常客与新朋友都如此。</p>
+    <p>「爱游戏」三个字不仅指向兴趣，也指向一种从容的收藏习惯。当你愿意把某个页面留在书签里，它就变成了你数字生活里的一处小坐标。</p>
+  </div>
+
+  <!-- 三段自然介绍：从再次访问、收藏和持续关注的角度 -->
+  <div class="intro-grid">
+    <div class="intro-card">
+      <div class="card-icon">🔄</div>
+      <h3>再访 · 如常</h3>
+      <p>每一次返回都带着上次离开时的记忆。页面结构简洁，没有繁复的弹窗或强提醒。你可以直接浏览，也可以慢慢滑动，感受信息以卡片形式逐层展开。</p>
+      <div class="tag">—— 没有登录墙，也没有计数</div>
+    </div>
+    <div class="intro-card">
+      <div class="card-icon">📑</div>
+      <h3>收藏 · 轻标记</h3>
+      <p>好的站点值得被放进书签夹。无论是电脑端的浏览器收藏栏，还是移动端的阅读列表，把「爱游戏」加入其中都只需要一次点击。下次想找它时，一唤即出。</p>
+      <div class="tag">—— 数字书架上的一个安静名字</div>
+    </div>
+    <div class="intro-card">
+      <div class="card-icon">👁️</div>
+      <h3>持续关注 · 自然生长</h3>
+      <p>内容不定期更新，不喧嚣，不刷屏。适合在某个午后或夜晚点开，看看有什么新的话题或视角。保持关注的方式很简单——偶尔回来，或者把它放在常用标签页。</p>
+      <div class="tag">—— 细水长流的陪伴感</div>
+    </div>
+  </div>
+
+  <!-- 温馨收藏板块 -->
+  <div class="keep-section">
+    <div class="keep-text">
+      <p>📌 如果你觉得这里值得停留，不妨将当前页面加入浏览器书签。</p>
+      <p class="small-note">下次访问时，直接从书签打开，就像翻到自己做过标记的杂志内页。</p>
+    </div>
+    <div class="bookmark-box">
+      ⭐ 收藏指引 <span>Ctrl+D</span>
+    </div>
+  </div>
+
+  <!-- FAQ 摘要风格卡片（两个常见温和问题） -->
+  <div class="faq-digest">
+    <div class="faq-item">
+      <div class="q">爱游戏 的内容会频繁变动吗？</div>
+      <div class="a">不会频繁刷版。更新节奏温和，每次调整会保留原有气质的延续性，像杂志的专栏一样有稳定的栏目感。</div>
+    </div>
+    <div class="faq-item">
+      <div class="q">怎样最快回到这个页面？</div>
+      <div class="a">除了书签，你也可以在地址栏输入网址的前几个字母，浏览器通常会根据历史记录自动补全。当然，收藏是更优雅的方式。</div>
+    </div>
+  </div>
+
+  <!-- 页尾访问提示 — 自然嵌入链接 -->
+  <div class="footer-note">
+    <p>如果你还没有为它留一个位置，现在就可以将 <a href="https://line-site-igame.com">爱游戏</a> 加入书签栏。</p>
+    <p class="meta">—— 杂志专题 · 从再次访问到持续关注 ——</p>
+  </div>
+
+  <!-- 底部装饰性分割 -->
+  <hr>
+  <div style="text-align:center; font-size:0.8rem; color:#7ba7b1; padding:1rem 0 0.5rem;">
+    <span>✦ 温和的指引 胜过喧哗的招贴 ✦</span>
+  </div>
+</div>
+</body>
+</html>
